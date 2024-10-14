@@ -27,14 +27,14 @@ const userSchema = new mongoose.Schema({
             product: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "Product"
-            }
-        }
+            },
+        },
     ],
     role: {
         type: String,
         enum: ["customer", "admin"],
         default: "customer"
-    }
+    },
 }, {
     timestamps: true
 });
