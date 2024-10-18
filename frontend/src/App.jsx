@@ -13,11 +13,18 @@ import LoadingSpinner from "./components/LoadingSpinner";
 
 function App() {
   const { user, checkAuth, checkingAuth } = useUserStore();
+	const { getCartItems } = useCartStore();
+  
+	useEffect(() => {
+		checkAuth();
+	}, [checkAuth]);
+
 
   useEffect(() => {
-    checkAuth();
-  }, [checkAuth]);
+		if (!user) return;
 
+		getCartItems();
+	}, [getCartItems, user]);
   if (checkingAuth) return <LoadingSpinner />;
 
   return (
